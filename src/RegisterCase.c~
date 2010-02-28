@@ -1,0 +1,76 @@
+/*   Multivariable controller and register for open and closed loop processes, it
+   acquires a 1-5 VCD analog signal(PV) with an interfase based on an ADC0804. Sends
+   a 4-20 mA analog signal to an I/P using a DAC. Commutation within ADC - DAC - PC
+   is done through a tri-state buffer which it's selection is performed by two
+   of the parallel port Control Lines. 
+     *For precise information RTFM
+
+   REGISTER
+   ***************************************************************************
+   *      This is where users registers their Name and Ctrl Nbr in order to  *
+   *   take a record of the student(s) that made the practice, this way      *
+   *   software prevents to copy-paste the practice results.                 *
+   ***************************************************************************
+
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2, or (at your option)
+   any later version.
+
+   This program is distributed in the hope that it will be useful
+   for electronics engineering or processes' control students
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   (C) Daniel Velazquez  <dvelazquezb@gmail.com>
+   Start date:20060702	(July 2nd, 2006)
+*/
+
+#include <string.h>
+#include <stdio.h>	/* standard C */
+#include <allegro.h>	/* great library to easily handle graphics */
+
+#include "IR.h"		/* this header defines program's values */
+
+  FILE *outfile;
+  BITMAP *Screen1;
+  PALETTE pal;
+
+  char Name[35], Number[20], FName[40];
+  char Letteri, Letterj, Letterk, Letterl, Option;
+  int i;
+
+int Register()
+{ 
+  acquire_screen();
+  
+  Screen1 = load_bitmap("images/Register/Base.pcx", pal);
+  blit(Screen1, screen, 0, 0, 0, 0, 1024, 768);
+  
+  font = load_font("config/unifont.dat", NULL, NULL);
+  Letteri=Letterk=NULL;	  
+
+  textprintf_ex(screen, font, 150, 250, 0, -1, "Tipo de Control:");
+  textprintf_ex(screen, font, 110, 280, DARK_GRAY, -1, "*Manual     *Automatico     *Logica Difusa");  
+
+void Capture()
+{
+  while (!key[KEY_ESC])
+    {
+      Option= readkey();
+      switch(Option)
+	{
+        case KEY_UP:
+	  {
+  	    Manual();
+	  }
+	case KEY_DOWN:
+	  {
+	    Automatic();
+	  }
+	default:
+		Register();
+	}
+}

@@ -1,0 +1,13 @@
+   Ayuda:
+El sistema utiliza una interfaz de adquisición de datos de alta velocidad y alto rendimiento para puerto serial
+DB9 RS 232.
+
+   Características principales:
+- Un canal de salida analógica de 4 a 20mA
+- Convertidor analógico-digital de 10 bits
+- Selección por software de la entrada analógica
+- Aislamiento electrico de las entradas y salidas
+- Comunicación serial multipunto a 9600 bauds
+- Basada en microcontrolador PIC16F877A
+   Lea la documentación para detalles.
+

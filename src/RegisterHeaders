@@ -1,0 +1,5 @@
+
+
+#include <string.h>
+#include <stdio.h>	/* standard C */
+#include <allegro.h>	/* great library to easily handle graphics */

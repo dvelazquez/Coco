@@ -1,0 +1,63 @@
+/*    Help section
+   Here the user will find the information needed to read data on screen
+   and some important information about the interfase so it can be easier te comprehend.
+   This program is part of the PCL812 package written by
+       Daniel Velazquez   <dvelazquez@linuxmail.org>
+   and it is provided 'as is' under the therms of the GPL license
+*/
+
+/* The super Help section*/
+#include <stdio.h>
+#include <allegro.h>
+#include "src/IR.h"		/* this header defines program's values */
+
+int Help()
+{
+  clear_to_color(screen, WHITE);  /* clear the screen to white */
+  textout_ex(screen, font, "  Introduction", 180, 120, BLACK, -1);
+  textout_ex(screen, font, "This interfase is a high performance, high speed, multi-function data acquisition", 35, 150, BLUE, -1);
+  textout_ex(screen, font, "card for IBM PC/XT/AT and compatible computers.", 35, 180, BLUE, -1);
+  textout_ex(screen, font, "  Key Features", 180, 220, BLACK, -1);
+  textout_ex(screen, font, "* 4 single-ended analog input channels.", 35, 250, BLUE, -1);
+  textout_ex(screen, font, "* 12-bit successive approximation converter (ADC1205)", 35, 280, BLUE, -1);
+  textout_ex(screen, font, "* Software programable analog input voltage", 35, 310, BLUE, -1);
+  textout_ex(screen, font, "* Three A/D trigger modes:", 35, 340, BLUE, -1);
+  textout_ex(screen, font, "* A 12 bit output range of from 0 to +5 V or 0 to +10 V", 35, 370, BLUE, -1);
+  textout_ex(screen, font, "* 16 TTL/DTL compatible digital input, and 16 digital output channels.", 35, 400, BLUE, -1);
+  textout_ex(screen, font, "Check data sheet for further information", 350, 470, GREEN, -1);
+  textout_ex(screen, font, "by Daniel Velazquez", 35, 700, BLACK, -1);
+  textout_ex(screen, font, "Press ENTER to Continue", 700, 700, BLACK, -1);
+  readkey();	    /* wait for a keypress */
+  readkey();	    /* wait for a keypress */  
+
+  clear_to_color(screen, WHITE);  /* clear the screen to white */
+  textout_ex(screen, font, "  Software", 180, 120, BLACK, -1);
+  textout_ex(screen, font, "This graphic automatically loads Vmax and Delay time values from", 95, 250, BLUE, -1);
+  textout_ex(screen, font, "PCL812.config file and plots Voltaje / Time as an indicator.", 95, 280, BLUE, -1);
+  textout_ex(screen, font, "The bar at the right shows the measured voltage in real time", 95, 490, BLUE, -1);
+  /* Lines to plot V/t */
+  hline(screen, 50, 600, 870, 1);  	// x1,  y, x2
+  vline(screen, 55, 260, 605, 1);  	// x , y1, y2
+  /* Lines to plot the V meter */
+  rect(screen, 920, 260, 970, 600, 1);	// x1, y1, x2, y2
+  textout_ex(screen, font, "Vmax", 20, 220, BLACK, -1);
+  textout_ex(screen, font, "3", 35, 320, BLACK, -1);
+  textout_ex(screen, font, "2", 35, 414, BLACK, -1);
+  textout_ex(screen, font, "1", 35, 511, BLACK, -1);
+  textout_ex(screen, font, "0", 35, 600, BLACK, -1);
+  textout_ex(screen, font, "by Daniel Velazquez", 35, 700, BLACK, -1);
+  textout_ex(screen, font, "Press ENTER to Continue", 700, 700, BLACK, -1);
+  readkey();
+
+  clear_to_color(screen, WHITE);  /* clear the screen to white */
+  textout_ex(screen, font, "You must restart the Program", 180, 120, BLACK, -1);
+  readkey();
+  Automatic();
+  exit;
+  release_screen();
+  destroy_font(font);
+  Automatic();
+  return 0;
+}
+
+END_OF_MAIN()
